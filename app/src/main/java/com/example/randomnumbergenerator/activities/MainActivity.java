@@ -1,19 +1,32 @@
 package com.example.randomnumbergenerator.activities;
 
+
+
+import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.randomnumbergenerator.R;
+import com.example.randomnumbergenerator.lib.Utils;
+import com.example.randomnumbergenerator.model.RandomNumber;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import com.example.randomnumbergenerator.databinding.ActivityMainBinding;
+import com.google.gson.Gson;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-private ActivityMainBinding binding;
+public class MainActivity extends AppCompatActivity {
+    private RandomNumber mRandomNumber;
+    private ArrayList<Integer> mNumberHistory;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +46,49 @@ private ActivityMainBinding binding;
                         .setAction("Action", null).show();
             }
         });
+
+        mRandomNumber = new RandomNumber();
+        initializeHistoryList(savedInstanceState,"HISTORY");
     }
-@Override
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        saveGameInSharedPrefs();
+    }
+
+    private void saveGameInSharedPrefs() {
+        SharedPreferences defaultSharedPreferences = getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = defaultSharedPreferences.edit();
+
+        Gson gson = new Gson();
+        // Save current game  to/from default shared preferences
+        editor.putString("HISTORY", gson.toJson(mNumberHistory));
+
+
+        editor.apply();
+    }
+
+    private void initializeHistoryList (Bundle savedInstanceState, String key)
+    {
+        if (savedInstanceState != null) {
+            mNumberHistory = savedInstanceState.getIntegerArrayList (key);
+        }
+        else {
+            String history = getDefaultSharedPreferences (this).getString (key, null);
+            mNumberHistory = history == null ?
+                    new ArrayList<> () : Utils.getNumberListFromJSONString (history);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Gson gson = new Gson();
+        outState.putString("HISTORY", gson.toJson(mNumberHistory));
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
