@@ -43,4 +43,9 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="fab_text">Generate Random Number</string>
+    <string name="request_to_user">Please enter in the numbers</string>
+    <string name="from_hint">From\n</string>
+    <string name="from_helper_text">From\n</string>
+    <string name="to_hint">To</string>
 </resources>
