@@ -5,4 +5,5 @@
     <dimen name="default_button_text_margin">26dp</dimen>
     <dimen name="slim_margin">4dp</dimen>
     <dimen name="inputMinWidth">100dp</dimen>
+    <dimen name="text_size">40sp</dimen>
 </resources>

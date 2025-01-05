@@ -2,8 +2,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.randomnumbergenerator.activities.MainActivity" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    <item android:id="@+id/action_about"
+        android:title="@string/action_about_text"
         android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_show_history"
+        android:title="@string/show_history_text"
+        android:orderInCategory="200"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_delete_history"
+        android:title="@string/delete_history_text"
+        android:orderInCategory="300"
         app:showAsAction="never" />
 </menu>

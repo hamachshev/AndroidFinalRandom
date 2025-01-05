@@ -48,4 +48,9 @@
     <string name="from_hint">From\n</string>
     <string name="from_helper_text">From\n</string>
     <string name="to_hint">To</string>
+    <string name="default_random_text">0</string>
+    <string name="show_history_text">Show History</string>
+    <string name="delete_history_text">Clear history</string>
+    <string name="action_about_text">About</string>
+    <string name="about_text">Aharon Seidman\'s Final Exam Random Number Generator App</string>
 </resources>
