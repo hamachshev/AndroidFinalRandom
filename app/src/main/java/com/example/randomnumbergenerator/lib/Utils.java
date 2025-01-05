@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mintedtech.randomnumbergenerator.R;
+import com.example.randomnumbergenerator.R;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
